@@ -19,6 +19,6 @@
 
 </body>
     
-    @include('partisi.footer')
+    {{-- @include('partisi.footer') --}}
 
 </html>

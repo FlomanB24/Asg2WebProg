@@ -30,7 +30,7 @@ class Port
         ],
         [
             "image" => "grafis.jpg",
-            "title" => "Portofolio Keempat",
+            "title" => "Portofolio Kelima",
             "name" => "Project Design Graphic",
             "subtitle" => "project-design-graphic",
             "description" => "Ad, excepturi earum. At delectus laboriosam possimus amet facere ullam quos veniam pariatur dicta itaque, ex veritatis vitae molestias ad unde porro nisi voluptate quod tenetur deserunt, minus commodi laudantium sed."
@@ -39,6 +39,21 @@ class Port
 
     public static function all() 
     {
-        return self::$myporto;
+        return collect(self::$myporto);
+    }
+
+    public static function find($subtitle) 
+    {
+        // return self::$myporto;
+        // $ports = self::$myporto;
+        $ports = static::all();
+        // $myportfolio = [];
+        // foreach ($ports as $port){
+        //     if($port["subtitle"] === $subtitle){
+        //         $myportfolio = $port;
+        //     }
+        // }
+        // return $myportfolio;
+        return $ports->firstWhere('subtitle', $subtitle);
     }
 }
