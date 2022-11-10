@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Models\Port;
+use App\Http\Controllers\PortController;
 
 Route::get('/', function () {
     return view('home',[
@@ -20,53 +21,7 @@ Route::get('/about', function () {
     ]);
 });
 
-// Route::get('/port', function () {
-//     return view ('port',[
-//         "title" => "Post"
-//     ]);
-// });
-
-
-Route::get('/ports', function () {
-
-    $ports_post = [
-        [
-            "image" => "entre.jpg",
-            "title" => "Portofolio Pertama",
-            "name" => "Project Entrepreneurship",
-            "subtitle" => "project-entrepreneurship",
-            "description" => "Amet dicta numquam modi voluptate odio velit ipsum dolores veniam, tempora, cum corrupti sunt impedit expedita earum animi consectetur tenetur quaerat laboriosam repellendus provident? "
-        ],
-    
-        [
-            "image" => "web.jpg",
-            "title" => "Portofolio Kedua",
-            "name" => "Project Human and Computer Interaction",
-            "subtitle" => "project-human-and-computer-interaction",
-            "description" => "Nostrum minima officia consequatur ipsam dolorum impedit qui. Quas cumque nihil molestias voluptatibus."
-        ],
-
-        [
-            "image" => "prog.jpg",
-            "title" => "Portofolio Ketiga",
-            "name" => "Project Web Programming",
-            "subtitle" => "project-web-programming",
-            "description" => "Ad, excepturi earum. At delectus laboriosam possimus amet facere ullam quos veniam pariatur dicta itaque, ex veritatis vitae molestias ad unde porro nisi voluptate quod tenetur deserunt."
-        ],
-        [
-            "image" => "grafis.jpg",
-            "title" => "Portofolio Keempat",
-            "name" => "Project Design Graphic",
-            "subtitle" => "project-design-graphic",
-            "description" => "Ad, excepturi earum. At delectus laboriosam possimus amet facere ullam quos veniam pariatur dicta itaque, ex veritatis vitae molestias ad unde porro nisi voluptate quod tenetur deserunt, minus commodi laudantium sed."
-        ]
-    ];
-
-    return view ('ports',[
-        "title" => "MyPortfolios",
-        "ports" => $ports_post
-    ]);
-});
+Route::get('/ports', [PortController::class, 'index']);
 
 
 Route::get('ports/{subtitle}', function($subtitle){
@@ -116,5 +71,3 @@ Route::get('ports/{subtitle}', function($subtitle){
         "port" => $myportfolio
     ]);
 });
-
-
